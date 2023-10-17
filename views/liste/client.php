@@ -17,7 +17,7 @@
 </div>
 <br>
 <div class="shadow-lg relative overflow-x-auto sm:rounded-lg">
-    <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
+    <table class="w-full text-sm text-left text-gray-700 dark:text-gray-600">
         <tr>
             <th class="px-6 py-3">Id</th>
             <th class="px-6 py-3">Nom Prénom</th>
