@@ -19,6 +19,15 @@ class ProduitsModele extends SQL
      * @param string $clientId
      * @return Produit[]
      */
+
+    public function lesProduits(): array
+    {
+        $query = "SELECT produit.* FROM produit";
+        $stmt = SQL::getPdo()->prepare($query);
+        $stmt->execute();
+        return $stmt->fetchAll(\PDO::FETCH_CLASS, Produit::class);
+    }
+
     public function lesProduitsClient(string $clientId): array
     {
         $query = "SELECT produit.* FROM produit INNER JOIN commander ON commander.idProduit = produit.id INNER JOIN client ON client.id = commander.idClient WHERE idClient = ?";
@@ -67,9 +76,9 @@ class ProduitsModele extends SQL
      * @param int $idClient
      * @return void
      */
-    public function affecterProduit(int $idProduit, int $idClient){
+    public function affecterProduit(string $idProduit, string $idClient){
         $query = "INSERT INTO commander(idProduit, idClient) VALUE (?, ?)";
         $stmt = SQL::getPdo()->prepare($query);
-        $stmt->execute([$idClient, $idProduit]);
+        $stmt->execute([$idProduit, $idClient]);
     }
 }

@@ -42,28 +42,27 @@
                     <th class="px-6 py-3">Nom</th>
                     <th class="px-6 py-3">Description</th>
                     <th class="px-6 py-3">Prix</th>
-                    <th class="px-6 py-3">Créé le</th>
+                    <th class="py-3"><form action="/commander/<?= $clients->getId()?>"><button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">+ Commander</button></form></th>
                 </tr>
-                <?php foreach ($clients->lesProduits() as $leProduit) { ?>
+                <?php 
+                foreach ($clients->lesProduits() as $leProduit) { ?>
                     <tr>
                         <th> <?= $leProduit->getId(); ?> </th>
                         <th> <?= $leProduit->getNom(); ?> </th>
                         <th> <?php $chaine = $leProduit->getDescription();
 
                                 if (strlen($chaine) > 10) {
-                                    $chaine = substr($chaine, 0, 10);
+                                    $chaine = substr($chaine, 0, 20).' ...';
                                 }
 
                                 echo $chaine; ?> </th>
                         <th> <?= $leProduit->getPrix(); ?> </th>
-                        <th> <?= $leProduit->getId(); ?> </th>
                     </tr>
                 <?php } ?>
             </table>
         </div>
     </div>
     <br><br>
-    <!-- Deuxième tableau ici, enveloppé dans un div séparé -->
     <div class="shadow-md relative sm:rounded-lg bg-neutral-100">
         <div class="card-body font-bold">
             Les adresses
@@ -78,6 +77,7 @@
                     <th class="px-6 py-3">Rue</th>
                     <th class="px-6 py-3">Code Postal</th>
                     <th class="px-6 py-3">Ville</th>
+                    <th class="py-3"><form action="/adresse/<?= $clients->getId()?>"><button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">+ Ajouter</button></form></th>
                 </tr>
                 <?php foreach ($clients->lesAdresses() as $lAdresse) { ?>
                     <tr>
@@ -85,6 +85,7 @@
                         <th> <?= $lAdresse->getRue(); ?> </th>
                         <th> <?= $lAdresse->getCodePostal(); ?></th>
                         <th> <?= $lAdresse->getVille(); ?> </th>
+                        <th> <a href="/suppAdresse/<?=$lAdresse->getId()?>" class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded">Supprimer</a></th>
                     </tr>
                 <?php } ?>
             </table>
