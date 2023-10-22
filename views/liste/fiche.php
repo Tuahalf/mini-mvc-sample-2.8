@@ -94,7 +94,7 @@
     <br><br>
     <div class="shadow-md relative sm:rounded-lg bg-neutral-100">
         <div class="card-body font-bold">
-            Les adresses
+            Les contacts
         </div>
     </div>
     <br>
