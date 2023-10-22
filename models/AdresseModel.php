@@ -40,7 +40,7 @@ class AdresseModel extends SQL
 
     public function suppAdresseClient(string $id)
     {
-        $query = "DELETE FROM 'adresse' WHERE id = ?";
+        $query = "DELETE FROM adresse WHERE id = ?";
         $stmt = SQL::getPdo()->prepare($query);
         $stmt->execute([$id]);
     }

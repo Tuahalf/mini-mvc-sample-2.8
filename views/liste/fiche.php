@@ -47,9 +47,9 @@
                 <?php 
                 foreach ($clients->lesProduits() as $leProduit) { ?>
                     <tr>
-                        <th> <?= $leProduit->getId(); ?> </th>
-                        <th> <?= $leProduit->getNom(); ?> </th>
-                        <th> <?php $chaine = $leProduit->getDescription();
+                        <th class="px-6 py-3"> <?= $leProduit->getId(); ?> </th>
+                        <th class="px-6 py-3"> <?= $leProduit->getNom(); ?> </th>
+                        <th class="px-6 py-3"> <?php $chaine = $leProduit->getDescription();
 
                                 if (strlen($chaine) > 10) {
                                     $chaine = substr($chaine, 0, 20).' ...';
@@ -77,19 +77,45 @@
                     <th class="px-6 py-3">Rue</th>
                     <th class="px-6 py-3">Code Postal</th>
                     <th class="px-6 py-3">Ville</th>
-                    <th class="py-3"><form action="/adresse/<?= $clients->getId()?>"><button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">+ Ajouter</button></form></th>
+                    <th class="px-6 py-3"><form action="/adresse/<?= $clients->getId()?>"><button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">+ Ajouter</button></form></th>
                 </tr>
                 <?php foreach ($clients->lesAdresses() as $lAdresse) { ?>
                     <tr>
-                        <th> <?= $lAdresse->getNom(); ?> </th>
-                        <th> <?= $lAdresse->getRue(); ?> </th>
-                        <th> <?= $lAdresse->getCodePostal(); ?></th>
-                        <th> <?= $lAdresse->getVille(); ?> </th>
-                        <th> <a href="/suppAdresse/<?=$lAdresse->getId()?>" class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded">Supprimer</a></th>
+                        <th class="px-6 py-3"> <?= $lAdresse->getNom(); ?> </th>
+                        <th class="px-6 py-3"> <?= $lAdresse->getRue(); ?> </th>
+                        <th class="px-6 py-3"> <?= $lAdresse->getCodePostal(); ?></th>
+                        <th class="px-6 py-3"> <?= $lAdresse->getVille(); ?> </th>
+                        <th class="px-6 py-3"> <a href="/suppAdresse/<?=$lAdresse->getId()?>/<?= $clients->getId()?>" class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded">Supprimer</a></th>
                     </tr>
                 <?php } ?>
             </table>
         </div>
     </div>
-
+    <br><br>
+    <div class="shadow-md relative sm:rounded-lg bg-neutral-100">
+        <div class="card-body font-bold">
+            Les adresses
+        </div>
+    </div>
+    <br>
+    <div class="shadow-md relative overflow-x-auto sm:rounded-lg bg-neutral-100">
+        <div class="card-body">
+            <table class="w-full text-sm text-left text-gray-700 dark:text-gray-600">
+                <tr>
+                    <th class="px-6 py-3">Nom contact</th>
+                    <th class="px-6 py-3">Numéro</th>
+                    <th class="px-6 py-3">Email</th>
+                    <th class="px-6 py-3"><form action="/contact/<?= $clients->getId()?>"><button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">+ Ajouter</button></form></th>
+                </tr>
+                <?php foreach ($clients->lesContacts() as $LeContact) { ?>
+                    <tr >
+                        <th class="px-6 py-3"> <?= $LeContact->getNom(); ?> </th>
+                        <th class="px-6 py-3"> <?= $LeContact->getNumero(); ?> </th>
+                        <th class="px-6 py-3"> <?= $LeContact->getEmail(); ?></th>
+                        <th class="px-6 py-3"> <a href="/suppContact/<?=$LeContact->getId()?>/<?= $clients->getId()?>" class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded">Supprimer</a></th>
+                    </tr>
+                <?php } ?>
+            </table>
+        </div>
+    </div>
 </div>

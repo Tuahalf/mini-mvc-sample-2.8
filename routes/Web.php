@@ -26,7 +26,11 @@ class Web
 
         Route::Add('/adresse/{id}', [$client, 'adresse']);
         Route::Add('/ajoutAdresse/{id}', [$client, 'ajoutAdresse']);
-        Route::Add('/suppAdresse/{id}', [$client, 'suppAdresse']);
+        Route::Add('/suppAdresse/{idAdresse}/{idClient}', [$client, 'suppAdresse']);
+
+        Route::Add('/contact/{id}', [$client, 'contact']);
+        Route::Add('/ajoutContact/{id}', [$client, 'ajoutContact']);
+        Route::Add('/suppContact/{idContact}/{idClient}', [$client, 'suppContact']);
 
         // Appel la fonction inline dans le routeur.
         // Utile pour du code très simple, où un tes, l'utilisation d'un contrôleur est préférable.
