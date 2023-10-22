@@ -36,6 +36,10 @@
                 }
             ?>
     </table>
-    <a href=?page=<?=$page-1?>><-Page précédente</a>
-    <a href=?page=<?=$page+1?> class="absolute bottom-0 right-0">Page suivante-></a>
+    <?php
+    if($page!=-1){ ?>
+        <a href=?page=<?=$page-1?>><-Page précédente</a>
+        <a href=?page=<?=$page+1?> class="absolute bottom-0 right-0">Page suivante-></a>
+    <?php } ?>
+    
 </div>

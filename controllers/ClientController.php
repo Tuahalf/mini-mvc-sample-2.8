@@ -36,12 +36,12 @@ class ClientController extends WebController
         );
     }
 
-    function rechercher()
+    function rechercher($page = -1)
     {
         $clients = $this->clientModele->recherche($_POST["text"]);
         return Template::render(
             "views/liste/client.php",
-            array("clients" => $clients)
+            array("clients" => $clients, "page" => $page)
         );
     }
 
